@@ -1,0 +1,51 @@
+services:
+  db:
+    image: mysql:8.0.32
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./tmp/mysql:/var/lib/mysql
+    platform: linux/arm64/v8
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - yens_service
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/nginx/Dockerfile
+  #   ports:
+  #     - "81:80"
+  #   volumes_from:
+  #     - app
+  #   platform: linux/amd64
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    command: /bin/sh -c "bundle install && bundle exec rails db:create && bundle exec rails db:migrate && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    tty: true
+    stdin_open: true
+    platform: linux/amd64
+    ports:
+      - 3006:3000
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    environment:
+      TZ: Asia/Tokyo
+      RAILS_ENV: development
+      MYSQL_PASSWORD: password
+      SLACK_WEB_HOOK_URL: ""
+    depends_on:
+      - db
+    networks:
+      - yens_service
+
+networks:
+  yens_service:
+    driver: bridge
