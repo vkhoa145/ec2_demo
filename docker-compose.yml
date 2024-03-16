@@ -12,15 +12,15 @@ services:
       MYSQL_ROOT_PASSWORD: password
     networks:
       - yens_service
-  # nginx:
-  #   build:
-  #     context: .
-  #     dockerfile: ./docker/nginx/Dockerfile
-  #   ports:
-  #     - "81:80"
-  #   volumes_from:
-  #     - app
-  #   platform: linux/amd64
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "81:80"
+    volumes_from:
+      - app
+    platform: linux/amd64
 
   app:
     build:
