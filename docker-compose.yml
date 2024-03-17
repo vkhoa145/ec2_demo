@@ -3,7 +3,7 @@ services:
     image: mysql:8.0.32
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - ./tmp/mysql:/var/lib/mysql
     platform: linux/arm64/v8
