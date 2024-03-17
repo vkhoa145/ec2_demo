@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *default
-  database: <%= ENV['DATABASE_DATABASE'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
-  host: <%= ENV.fetch("DATABASE_HOST", "db") %>
+  database: <%= ENV['DB_NAME_DEV'] %>
+  username: root
+  password: password
+  host: rails-ec2-dem-db.ct42okyumplq.ap-southeast-1.rds.amazonaws.com
