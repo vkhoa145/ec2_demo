@@ -39,7 +39,7 @@ services:
       - .:/app
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: development
+      RAILS_ENV: production
       MYSQL_PASSWORD: password
       SLACK_WEB_HOOK_URL: ""
     # depends_on:
