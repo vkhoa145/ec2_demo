@@ -1,4 +1,4 @@
-FROM ruby:3.2.2-slim
+FROM ruby:3.0.0-slim
 
 RUN apt-get update -y && \
   apt-get upgrade -y && \
