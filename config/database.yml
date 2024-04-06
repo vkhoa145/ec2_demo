@@ -19,5 +19,5 @@ production:
   database: <%= ENV['DB_NAME_DEV'] %>
   username: "root"
   password: "12345678"
-  host: "rails-db.ct42okyumplq.ap-southeast-1.rds.amazonaws.com"
+  host: "ec2-db.ct42okyumplq.ap-southeast-1.rds.amazonaws.com"
   port: "3309"
