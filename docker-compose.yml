@@ -32,14 +32,14 @@ services:
     stdin_open: true
     platform: linux/amd64
     ports:
-      - 3006:3000
+      - 3000:3000
     env_file:
       - .env
     volumes:
       - .:/app
     environment:
       TZ: Asia/Tokyo
-      RAILS_ENV: production
+      RAILS_ENV: development
       MYSQL_PASSWORD: password
       SLACK_WEB_HOOK_URL: ""
     # depends_on:
